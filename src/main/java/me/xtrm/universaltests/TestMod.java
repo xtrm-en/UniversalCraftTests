@@ -3,6 +3,8 @@ package me.xtrm.universaltests;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import gg.essential.universal.UMinecraft;
+import gg.essential.universal.UScreen;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.client.event.GuiOpenEvent;
@@ -22,7 +24,8 @@ public class TestMod {
     public void onGui(GuiOpenEvent event){
         GuiScreen gui = event.gui;
         if(gui instanceof GuiChat) { // idk mate
-            event.gui = new TestScreen();
+            event.setCanceled(true);
+            UScreen.displayScreen(new TestScreen());
         }
     }
 
