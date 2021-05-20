@@ -24,8 +24,7 @@ public class TestMod {
     public void onGui(GuiOpenEvent event){
         GuiScreen gui = event.gui;
         if(gui instanceof GuiChat) { // idk mate
-            event.setCanceled(true);
-            UScreen.displayScreen(new TestScreen());
+            event.gui = new TestScreen();
         }
     }
 
