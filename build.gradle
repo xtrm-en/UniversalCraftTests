@@ -14,6 +14,7 @@ buildscript {
         classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.0.+') {
             changing = true
         }
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$project.kotlin_version"
     }
 }
 
@@ -22,11 +23,11 @@ plugins {
     id 'maven-publish'
 }
 
-// These settings allow you to choose what version of Java you want to be compatible with. Forge 1.7.10 runs on Java 6 to 8.
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 apply plugin: 'forge'
+apply plugin: 'kotlin'
 
 version = project.version
 group = project.group
@@ -46,7 +47,9 @@ repositories {
 }
 
 dependencies {
-    implementation "club.sk1er:UniversalCraft:97-10710-SNAPSHOT"
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 processResources {
