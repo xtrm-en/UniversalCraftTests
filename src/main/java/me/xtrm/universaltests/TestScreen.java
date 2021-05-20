@@ -1,7 +1,9 @@
 package me.xtrm.universaltests;
 
 import gg.essential.universal.*;
+import gg.essential.universal.wrappers.message.UMessage;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.util.ChatComponentText;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -17,7 +19,8 @@ public class TestScreen extends UScreen {
         super.initScreen(width, height);
 
         System.out.println("yes");
-        this.buttonList.add(new GuiButton(-1, 10, 10, "Test button"));
+        this.buttonList.add(new GuiButton(-1, 10, 12, "Test button"));
+        this.buttonList.add(new GuiButton(534681652, 10, 35, "Test but better"));
     }
 
     @Override
@@ -51,6 +54,9 @@ public class TestScreen extends UScreen {
         if (button.id == -1) {
             UChat.actionBar("This shouldn't do anything");
             UChat.chat("helo");
+        }
+        if (button.id == 534681652){
+            new UMessage("Hello", " yes ", new ChatComponentText(ChatColor.BLUE + "indeed")).chat();
         }
     }
 
